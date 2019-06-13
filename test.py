@@ -35,3 +35,16 @@ m10 =  Matrix([2,3,4],[1,7,6]).matrix
 m11 = Matrix([3,1,2],[2,2,7],[4,3,6]).matrix
 
 dot_product(m10, m11)
+print(np.dot(m10, m11))
+
+m12 = Matrix([2,2], [4,5]).matrix
+m13 = Matrix([4,6], [22,21]).matrix
+
+print(np.dot(m12,m13))
+dot_product(m12, m13)
+
+m14 = Matrix([2, 3, 4, 5, 6]).matrix
+m15 = Matrix([2],[3], [4],[6],[6]).matrix
+
+print(np.dot(m14, m15))
+dot_product(m14, m15)

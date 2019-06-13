@@ -49,16 +49,43 @@ def transpose(matrix):
     init_matrix = initialize(len(matrix[0]),len(matrix))
     return _transpose(matrix, init_matrix)
 
-def dot_product(a, b):
+"""def dot_product(a, b):
     if len(a[0]) != len(b):
         raise Exception("# of rows for matrix a is not equal to # of cols in matrix b!")
     else:
         t = transpose(a)
         for i in range(len(b)): # Iterate  number of rows times
+            some =  []
             for j in range(len(t)): # j is the current row  of the transposed matrix
+                temp = []
                 for k in range(len(t[j])):
                     num = b[i][j]
                     multiplier = t[j][k]
                     print("Multiplying " + str(num) + " by " + str(multiplier))
+                    temp.append(num*multiplier)
+                some.append(temp)
+                print(some)"""
+
+def dot_product(a, b):
+    if len(a[0]) != len(b):
+        return
+    else:
+        t = transpose(b)
+        
+        i = 0
+        new =  []
+        for outer in t:
+            col = []
+            for inner in a:
+                j = 0
+                sum = 0
+                for num in inner:
+                    sum += num*outer[j]
+                    j+=1
+                col.append(sum)
+            new.append(col)
+
+        print(transpose(new))
+                
                 
             
