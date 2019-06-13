@@ -43,11 +43,18 @@ m13 = Matrix([4,6], [22,21]).matrix
 print(np.dot(m12,m13))
 dot_product(m12, m13)
 
-m14 = Matrix([2, 3, 4, 5, 6]).matrix
-m15 = Matrix([2],[3], [4],[6],[6]).matrix
+m14 = Matrix([2, 3, 4, 5, 6])
+m15 = Matrix([2],[3], [4],[6],[6])
 
-print(dot_product(m14, m15))
+print(dot_product(m14.matrix, m15.matrix))
 
 print(np.dot([[2,2],[1,3]], [[5,4],[2,9]]))
 
 print(scale(m13, 2))
+
+print(m8.size_of_matrix())
+print(m9.size_of_matrix())
+
+m16 = Matrix([2,1],[4,2])
+m17 = Matrix([2,3],[3,1])
+print(sum(m16,m17))

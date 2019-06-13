@@ -5,9 +5,12 @@ class Matrix:
             raise Exception("Cannot be empty Matrix!")
         if self.valid_matrix([*args]):
             self.matrix = [*args]
+            self.rows = len(args)
+            self.columns = len(args[0])
         else:
             raise Exception("Invalid Matrix. All rows must have the same amount of columns")
-    
+    def size_of_matrix(self):
+        return str(self.rows) + 'x' + str(self.columns)
     def valid_matrix(self, matrix):
         if len(matrix) == 0:
             return True
@@ -96,3 +99,19 @@ def scale(matrix, scalar):
             cols.append(entry*scalar)
         newMatrix.append(cols)
     return newMatrix
+
+def sum(matrix_a, matrix_b):
+    if isinstance(matrix_a, Matrix) and isinstance(matrix_b, Matrix):
+        newMatrix = []
+        if matrix_a.size_of_matrix() == matrix_b.size_of_matrix():
+            for i in range(len(matrix_a.matrix)):
+                col = []
+                for j in range(len(matrix_a.matrix[i])):
+                    sum = matrix_a.matrix[i][j] + matrix_b.matrix[i][j]
+                    col.append(sum)
+                newMatrix.append(col)
+            return newMatrix
+        else:
+            raise Exception("The size of both matrices must be the same!")
+    else:
+        raise Exception("Must be instances of a Matrix object")
