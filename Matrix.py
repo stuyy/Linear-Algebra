@@ -1,5 +1,8 @@
 class Matrix:
     def __init__(self, *args):
+
+        if len(args) == 0:
+            raise Exception("Cannot be empty Matrix!")
         if self.valid_matrix([*args]):
             self.matrix = [*args]
         else:
@@ -45,3 +48,17 @@ def transpose(matrix):
         return result
     init_matrix = initialize(len(matrix[0]),len(matrix))
     return _transpose(matrix, init_matrix)
+
+def dot_product(a, b):
+    if len(a[0]) != len(b):
+        raise Exception("# of rows for matrix a is not equal to # of cols in matrix b!")
+    else:
+        t = transpose(a)
+        for i in range(len(b)): # Iterate  number of rows times
+            for j in range(len(t)): # j is the current row  of the transposed matrix
+                for k in range(len(t[j])):
+                    num = b[i][j]
+                    multiplier = t[j][k]
+                    print("Multiplying " + str(num) + " by " + str(multiplier))
+                
+            

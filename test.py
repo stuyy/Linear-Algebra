@@ -22,3 +22,16 @@ m7 = Matrix([2],[3],[4]).matrix
 print(transpose(m7))
 
 print(transpose(Matrix([4,4,4,4],[4,2,3,45]).matrix))
+
+m8 = Matrix([2, 3, 4])
+m9 = Matrix([2, 3])
+
+try:
+    dot_product(m8.matrix, m9.matrix)
+except Exception as error:
+    print(error)
+
+m10 =  Matrix([2,3,4],[1,7,6]).matrix
+m11 = Matrix([3,1,2],[2,2,7],[4,3,6]).matrix
+
+dot_product(m10, m11)
