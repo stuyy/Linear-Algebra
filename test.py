@@ -15,33 +15,10 @@ m5 = Matrix([2,4,6],[8,2,7]).matrix
 m6 = Matrix([2, 3],[1, 2],[2, 4]).matrix
 print(np.dot(m5, m6))
 
+tm6 = transpose(m6)
+print(tm6)
 
-def transpose(matrix):
-    def initialize(rows, columns):
-        matrix = []
-        for x in range(rows):
-            matrix.append([])
-            for y in range(columns):
-                matrix[x].insert(y, 0)
-        
-        return matrix
+m7 = Matrix([2],[3],[4]).matrix
+print(transpose(m7))
 
-    def _transpose(initial_matrix, result):
-        rows=len(result)
-        cols=len(result[0])
-        for i in range(rows):
-            for j in range(cols):
-                result[i][j] = initial_matrix[j][i]
-
-        return result
-    init_matrix = initialize(len(matrix[0]),len(matrix))
-    return _transpose(matrix, init_matrix)
-
-# Length of Matrix is the number of rows. So that means there will be len(matrix) of columns in the transpose.
-
-arr = []
-
-arr.insert(5, 2)
-transpose_of_m6 = transpose(m6)
-print(m6)
-print(transpose_of_m6)
+print(transpose(Matrix([4,4,4,4],[4,2,3,45]).matrix))
