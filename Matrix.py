@@ -68,24 +68,31 @@ def transpose(matrix):
 
 def dot_product(a, b):
     if len(a[0]) != len(b):
-        return
+        raise Exception("# of  rows for matrix a is not  equal to # of cols in matrix b!")
     else:
-        t = transpose(b)
-        
+        t = transpose(b) # Transpose Matrix B
+        new = [] # Initialize an empty array which will hold all columns
         i = 0
-        new =  []
-        for outer in t:
-            col = []
-            for inner in a:
-                j = 0
-                sum = 0
-                for num in inner:
-                    sum += num*outer[j]
+        for outer in t: # For every row in the Transpose of Matrix B
+            col = [] # Initialize column matrix
+            k = 0
+            for inner in a: # For each row in Matrix A.
+                j = 0 # Initialize j, our counter
+                sum = 0 # Sum 
+                for num in inner: # For each number in the current row of Matrix A.
+                    sum += num*outer[j] # Take the current number in the current row of Matrix A, and multiply it with the outer row at subscript j.
+                    # Essentially we are summing up and placing them in the right column.
                     j+=1
-                col.append(sum)
+                col.append(sum) # Once we sum everything, we append to the column. Repeat loop for next row in Matrix A.
             new.append(col)
 
-        print(transpose(new))
+        return transpose(new)
                 
-                
-            
+def scale(matrix, scalar):
+    newMatrix = []
+    for rows in matrix:
+        cols = []
+        for entry in rows:
+            cols.append(entry*scalar)
+        newMatrix.append(cols)
+    return newMatrix

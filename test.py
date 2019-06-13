@@ -46,5 +46,8 @@ dot_product(m12, m13)
 m14 = Matrix([2, 3, 4, 5, 6]).matrix
 m15 = Matrix([2],[3], [4],[6],[6]).matrix
 
-print(np.dot(m14, m15))
-dot_product(m14, m15)
+print(dot_product(m14, m15))
+
+print(np.dot([[2,2],[1,3]], [[5,4],[2,9]]))
+
+print(scale(m13, 2))
