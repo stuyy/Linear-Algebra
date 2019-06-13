@@ -115,3 +115,19 @@ def sum(matrix_a, matrix_b):
             raise Exception("The size of both matrices must be the same!")
     else:
         raise Exception("Must be instances of a Matrix object")
+
+def subtract(matrix_a, matrix_b):
+    if isinstance(matrix_a, Matrix) and isinstance(matrix_b, Matrix):
+        newMatrix = []
+        if matrix_a.size_of_matrix() == matrix_b.size_of_matrix():
+            for i in range(len(matrix_a.matrix)):
+                col = []
+                for j in range(len(matrix_a.matrix[i])):
+                    diff = matrix_a.matrix[i][j] - matrix_b.matrix[i][j]
+                    col.append(diff)
+                newMatrix.append(col)
+            return newMatrix
+        else:
+            raise Exception("The size of both matrices must be the same!")
+    else:
+        raise Exception("Must be instances of a Matrix object")
