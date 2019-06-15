@@ -157,6 +157,7 @@ def inverse(matrix):
         return None
 
 def det(matrix):
+    
     if is_square(matrix):
         matrix = matrix if isinstance(matrix, list) else matrix.matrix if isinstance(matrix, Matrix) else None
         if len(matrix) == 1:
@@ -172,7 +173,16 @@ def det(matrix):
         else:
             print("Length is " + str(len(matrix)))
             first_row = matrix[0] # Row 1
+            j = 0
             sum = 0
+            for i in range(1, len(first_row)+1):
+                f = int(math.pow(-1, (i+1)))
+                sub_matrix = get_sub_matrix(matrix, 1, i)
+                det_sub_matrix = f*first_row[i-1]*det(sub_matrix)
+                sum += det_sub_matrix
+            
+            return sum
+            '''sum = 0
             for i in range(1, len(first_row)+1):
                 f = int(math.pow(-1, (i+1)))
                 print("Sub Matrix for " + str(first_row[i-1]))
@@ -180,8 +190,9 @@ def det(matrix):
                 sub = get_sub_matrix(matrix, 1, i)
                 sum += (f*first_row[i-1]*det(sub))
 
-            print(sum)
+            return sum'''
     else:
+        print("Square?")
         return 0
         
 def is_square(matrix):
