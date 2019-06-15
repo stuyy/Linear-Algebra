@@ -2,9 +2,6 @@
 
 ## Linear Algebra Library written in Python
 
-I got bored, so a way to brush up and review Linear Algebra was to write a library, because it's not like one already exists, right? *Just kidding*
-
-I'm thoroughly comparing the output from my own functions with `numpy` for accurateness, so far everything has been good.
 
 # Documentation
 
