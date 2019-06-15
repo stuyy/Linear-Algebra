@@ -141,18 +141,51 @@ def inverse(matrix):
                 b = m[0][1]
                 c = m[1][0]
                 d = m[1][1]
-                det = (1/((a*d)-(b*c)))
-                m[0][0] = d
-                m[1][1] = a
-                m[0][1] = 0-b
-                m[1][0] = 0-c
+                det = (a*d)-(b*c)
                 if det == 0:
                     return None
                 else:
-                    return scale(m, det)
+                    m[0][0] = d
+                    m[1][1] = a
+                    m[0][1] = 0-b
+                    m[1][0] = 0-c
+                    scalar = (1/((a*d)-(b*c)))
+                    return scale(m, scalar)
+    else:
+        return None
+
+def det(matrix):
+    if isinstance(matrix, Matrix):
+        if is_square(matrix):
+            if len(matrix.matrix) == 2:
+                m = matrix.matrix
+                a = m[0][0]
+                b = m[0][1]
+                c = m[1][0]
+                d = m[1][1]
+                return (1/((a*d)-(b*c)))
             else:
                 pass
-
+    else:
+        return None
 def is_square(matrix):
     if isinstance(matrix, Matrix):
         return len(matrix.matrix) == len(matrix.matrix[0])
+
+def get_sub_matrix(matrix, row, column):
+    print("Give me the sub matrix at row " + str(row) + " column " + str(column))
+    row -= 1
+    column -=1
+    i = 0
+    for rows in matrix:
+        if i == row:
+            pass
+        else:
+            j = 0
+            for num in rows:
+                if j == column:
+                    pass
+                else:
+                    print(num)
+                j+=1
+        i += 1
