@@ -1,3 +1,5 @@
+import math
+
 class Matrix:
     def __init__(self, *args):
 
@@ -160,25 +162,34 @@ def det(matrix):
         if len(matrix) == 1:
             return matrix.matrix[0][0]
         if len(matrix) == 2:
-            m = matrix.matrix
+            print("length 2")
+            m = matrix
             a = m[0][0]
             b = m[0][1]
             c = m[1][0]
             d = m[1][1]
             return (a*d)-(b*c)
         else:
-            print("Length is 3")
+            print("Length is " + str(len(matrix)))
+            first_row = matrix[0] # Row 1
+            sum = 0
+            for i in range(1, len(first_row)+1):
+                f = int(math.pow(-1, (i+1)))
+                print("Sub Matrix for " + str(first_row[i-1]))
+                print(get_sub_matrix(matrix, 1, i))
+                sub = get_sub_matrix(matrix, 1, i)
+                sum += (f*first_row[i-1]*det(sub))
+
+            print(sum)
     else:
-        return None
+        return 0
         
 def is_square(matrix):
     return len(matrix.matrix) == len(matrix.matrix[0]) if isinstance(matrix, Matrix) else len(matrix) == len(matrix[0]) if isinstance(matrix, list) else None
 
 def get_sub_matrix(matrix, row, column):
     
-    print(type(matrix))
     matrix = matrix if isinstance(matrix, list) else matrix.matrix if isinstance(matrix, Matrix) else None
-    print(type(matrix))
     row -= 1
     column -= 1
     newMatrix = []
@@ -187,7 +198,6 @@ def get_sub_matrix(matrix, row, column):
         if i == row:
             pass
         else:
-            print(rows)
             j = 0
             newRow = []
             for num in rows:
