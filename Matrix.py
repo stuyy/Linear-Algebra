@@ -155,33 +155,39 @@ def inverse(matrix):
         return None
 
 def det(matrix):
-    if isinstance(matrix, Matrix):
-        if is_square(matrix):
-            if len(matrix.matrix) == 2:
-                m = matrix.matrix
-                a = m[0][0]
-                b = m[0][1]
-                c = m[1][0]
-                d = m[1][1]
-                return (1/((a*d)-(b*c)))
-            else:
-                pass
+    if is_square(matrix):
+        matrix = matrix if isinstance(matrix, list) else matrix.matrix if isinstance(matrix, Matrix) else None
+        if len(matrix) == 1:
+            return matrix.matrix[0][0]
+        if len(matrix) == 2:
+            m = matrix.matrix
+            a = m[0][0]
+            b = m[0][1]
+            c = m[1][0]
+            d = m[1][1]
+            return (a*d)-(b*c)
+        else:
+            print("Length is 3")
     else:
         return None
+        
 def is_square(matrix):
-    if isinstance(matrix, Matrix):
-        return len(matrix.matrix) == len(matrix.matrix[0])
+    return len(matrix.matrix) == len(matrix.matrix[0]) if isinstance(matrix, Matrix) else len(matrix) == len(matrix[0]) if isinstance(matrix, list) else None
 
 def get_sub_matrix(matrix, row, column):
-    print("Give me the sub matrix at row " + str(row) + " column " + str(column))
+    
+    print(type(matrix))
+    matrix = matrix if isinstance(matrix, list) else matrix.matrix if isinstance(matrix, Matrix) else None
+    print(type(matrix))
     row -= 1
-    column -=1
+    column -= 1
     newMatrix = []
     i = 0
     for rows in matrix:
         if i == row:
             pass
         else:
+            print(rows)
             j = 0
             newRow = []
             for num in rows:
@@ -192,5 +198,4 @@ def get_sub_matrix(matrix, row, column):
                 j+=1
             newMatrix.append(newRow)
         i += 1
-    
     return newMatrix
