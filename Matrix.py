@@ -131,3 +131,28 @@ def subtract(matrix_a, matrix_b):
             raise Exception("The size of both matrices must be the same!")
     else:
         raise Exception("Must be instances of a Matrix object")
+
+def inverse(matrix):
+    if isinstance(matrix, Matrix):
+        if is_square(matrix):
+            if len(matrix.matrix) == 2:
+                m = matrix.matrix
+                a = m[0][0]
+                b = m[0][1]
+                c = m[1][0]
+                d = m[1][1]
+                det = (1/((a*d)-(b*c)))
+                m[0][0] = d
+                m[1][1] = a
+                m[0][1] = 0-b
+                m[1][0] = 0-c
+                if det == 0:
+                    return None
+                else:
+                    return scale(m, det)
+            else:
+                pass
+
+def is_square(matrix):
+    if isinstance(matrix, Matrix):
+        return len(matrix.matrix) == len(matrix.matrix[0])
