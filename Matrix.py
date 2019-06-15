@@ -155,23 +155,21 @@ def inverse(matrix):
                     return scale(m, scalar)
     else:
         return None
-
-def det(matrix):
+'''
+    Computes the determinant of an NxN square matrix, recursively.
     
+    args:
+        matrix (int or Matrix): - A Matrix or 2D List
+    returns:
+        determinant (int): The determinant of the NxN Matrix.
+        
+'''
+def det(matrix):
     if is_square(matrix):
         matrix = matrix if isinstance(matrix, list) else matrix.matrix if isinstance(matrix, Matrix) else None
         if len(matrix) == 1:
-            return matrix.matrix[0][0]
-        if len(matrix) == 2:
-            print("length 2")
-            m = matrix
-            a = m[0][0]
-            b = m[0][1]
-            c = m[1][0]
-            d = m[1][1]
-            return (a*d)-(b*c)
+            return matrix[0][0]
         else:
-            print("Length is " + str(len(matrix)))
             first_row = matrix[0] # Row 1
             j = 0
             sum = 0
@@ -182,18 +180,8 @@ def det(matrix):
                 sum += det_sub_matrix
             
             return sum
-            '''sum = 0
-            for i in range(1, len(first_row)+1):
-                f = int(math.pow(-1, (i+1)))
-                print("Sub Matrix for " + str(first_row[i-1]))
-                print(get_sub_matrix(matrix, 1, i))
-                sub = get_sub_matrix(matrix, 1, i)
-                sum += (f*first_row[i-1]*det(sub))
-
-            return sum'''
     else:
-        print("Square?")
-        return 0
+        return None
         
 def is_square(matrix):
     return len(matrix.matrix) == len(matrix.matrix[0]) if isinstance(matrix, Matrix) else len(matrix) == len(matrix[0]) if isinstance(matrix, list) else None
