@@ -176,16 +176,21 @@ def get_sub_matrix(matrix, row, column):
     print("Give me the sub matrix at row " + str(row) + " column " + str(column))
     row -= 1
     column -=1
+    newMatrix = []
     i = 0
     for rows in matrix:
         if i == row:
             pass
         else:
             j = 0
+            newRow = []
             for num in rows:
                 if j == column:
                     pass
                 else:
-                    print(num)
+                    newRow.append(num)
                 j+=1
+            newMatrix.append(newRow)
         i += 1
+    
+    return newMatrix
