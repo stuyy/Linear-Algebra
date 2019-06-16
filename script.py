@@ -1,23 +1,38 @@
 from tkinter import *
 from datetime import date
 from datetime import datetime
+from Matrix import *
 
-def create(rows, cols, root):
+def determinant(rows, cols, matrix, root):
     window = Toplevel(root)
     window.title("Matrix")
-    entries_list = []
+    entries = []
 
     for i in range(rows):
         for j in range(cols):
             entry = Entry(window, width=5)
             entry.grid(row=i, column=j)
-            entries_list.append(entry)
-        
-    def showEntries():
-        for i in entries_list:
-            print(i.get())
-
+            entries.append(entry)
     
+    def showEntries():
+        matrix = setMatrix()
+        answer = LabelFrame(window, text='Answer')
+        answer.grid(row=3, column=3)
+        Label(answer, text=det(matrix)).grid(row=3, column=4)
+    def setMatrix():
+        total = len(entries)
+        i = 0
+        temp_matrix = []
+        curr_row = -1
+        for e in entries:
+            if i % rows == 0: # We need to reset the row.
+                temp_matrix.append([])
+                curr_row += 1
+                temp_matrix[curr_row].append(int(e.get()))
+            else:
+                temp_matrix[curr_row].append(int(e.get()))
+            i+=1
+        return temp_matrix
     btn = Button(window, text='Go', command=lambda: showEntries())
 
     btn.grid()
@@ -50,8 +65,8 @@ def start():
 
     cols_input = Entry(labelframe)
     cols_input.pack()
-    
-    btn = Button(labelframe, text='Go', command=lambda: create(int(rows_input.get()), int(cols_input.get()), ROOT))
+    matrix = []
+    btn = Button(labelframe, text='Go', command = lambda: determinant(int(rows_input.get()), int(cols_input.get()), matrix, ROOT))
     btn.pack()
     ROOT.mainloop()
 
